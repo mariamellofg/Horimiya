@@ -1,0 +1,1980 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#180d19">
+<meta name="description" content="Um universo interativo de fã dedicado a Horimiya: personagens, histórias, jogos, curiosidades e muito romance.">
+<title>Horimiya ✦ Between Hearts</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap');
+
+:root{
+  --bg:#180d19;
+  --bg2:#251224;
+  --card:#2d192d;
+  --card2:#382038;
+  --pink:#ff9fbd;
+  --rose:#e96c99;
+  --wine:#8e345f;
+  --gold:#f1c78e;
+  --lav:#c9a9ed;
+  --white:#fff5f7;
+  --muted:#cbb8c9;
+  --line:#ffffff1b;
+  --shadow:0 20px 65px #00000025;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{
+  font-family:'DM Sans',sans-serif;
+  color:var(--white);
+  background:
+    radial-gradient(ellipse at 5% 5%,#55233c 0,transparent 32%),
+    radial-gradient(ellipse at 95% 25%,#382041 0,transparent 35%),
+    radial-gradient(ellipse at 40% 75%,#38192d 0,transparent 38%),
+    var(--bg);
+  overflow-x:hidden;
+}
+button,input{font:inherit}
+button{color:inherit}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--rose);color:white}
+
+#sky{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  width:100%;
+  height:100%;
+}
+
+#petals{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:30;
+}
+
+.petal{
+  position:absolute;
+  top:-40px;
+  width:10px;
+  height:15px;
+  background:linear-gradient(135deg,#ffc3d5,#d85d91);
+  border-radius:90% 10% 90% 10%;
+  opacity:.65;
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  to{transform:translate3d(var(--drift),110vh,0) rotate(720deg);opacity:0}
+}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-15px)}
+}
+@keyframes pulse{
+  0%,100%{text-shadow:0 0 12px #ff9fbd35}
+  50%{text-shadow:0 0 38px #ff9fbd90}
+}
+@keyframes rotate{to{transform:rotate(360deg)}}
+@keyframes shine{
+  0%{background-position:0%}
+  100%{background-position:200%}
+}
+@keyframes heartbeat{
+  0%,100%{transform:scale(1)}
+  20%{transform:scale(1.13)}
+  40%{transform:scale(1)}
+  60%{transform:scale(1.08)}
+}
+@keyframes wave{
+  0%,100%{transform:translateY(0) rotate(-2deg)}
+  50%{transform:translateY(-9px) rotate(2deg)}
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#180d19eF;
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav{
+  max-width:1300px;
+  margin:auto;
+  padding:16px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:22px;
+}
+
+.brand{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;
+  font-weight:800;
+  color:var(--pink);
+  white-space:nowrap;
+}
+
+.nav-links{
+  display:flex;
+  gap:19px;
+  align-items:center;
+  list-style:none;
+  flex-wrap:wrap;
+}
+
+.nav-links a{
+  color:var(--muted);
+  font-size:.82rem;
+  transition:.25s;
+}
+
+.nav-links a:hover{color:var(--pink)}
+
+.menu-btn{
+  display:none;
+  background:transparent;
+  border:1px solid var(--line);
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.hero{
+  min-height:91vh;
+  max-width:1300px;
+  margin:auto;
+  padding:90px 6%;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+  gap:35px;
+  position:relative;
+}
+
+.eyebrow{
+  color:var(--gold);
+  font-size:.73rem;
+  font-weight:800;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+h1,h2,h3{font-family:'Playfair Display',serif}
+
+.hero h1{
+  font-size:clamp(3.5rem,8vw,7.3rem);
+  line-height:.99;
+  margin:27px 0;
+  letter-spacing:-3px;
+}
+
+.gradient{
+  background:linear-gradient(100deg,#ffd1dd,#f28bad,#e8b8f2,#f5d4a0,#ffd1dd);
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:shine 7s linear infinite;
+}
+
+.hero-desc{
+  color:var(--muted);
+  line-height:1.95;
+  max-width:560px;
+}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:13px;
+  margin-top:30px;
+}
+
+.btn{
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:13px 20px;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-weight:800;
+  transition:transform .25s,box-shadow .25s,background .25s;
+}
+
+.btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 32px #e96c992c;
+}
+
+.btn-primary{
+  background:linear-gradient(110deg,#a33c6a,#e96c99);
+  border:0;
+  color:white;
+}
+
+.btn-ghost{background:#ffffff08}
+
+.hero-art{
+  min-height:470px;
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+
+.heart-orbit{
+  position:absolute;
+  width:min(350px,75vw);
+  aspect-ratio:1;
+  border:1px solid #ffb3cf45;
+  border-radius:50%;
+  animation:rotate 35s linear infinite;
+}
+
+.heart-orbit:before,.heart-orbit:after{
+  content:"♡";
+  position:absolute;
+  font-size:2rem;
+  color:var(--pink);
+  text-shadow:0 0 25px #ff8ab8;
+}
+.heart-orbit:before{top:15%;left:8%}
+.heart-orbit:after{bottom:12%;right:5%}
+
+.heart-orbit.two{
+  width:min(270px,58vw);
+  border-style:dashed;
+  animation-direction:reverse;
+  animation-duration:27s;
+}
+
+.heart-core{
+  width:185px;
+  height:185px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#ffd9e7,#bd5a84 48%,#59213f 85%);
+  box-shadow:0 0 45px #ec76a33d,0 0 120px #b9497b25,inset -12px -15px 35px #42162c55;
+  font-size:5.4rem;
+  animation:float 5s ease-in-out infinite;
+  position:relative;
+}
+
+.heart-core:after{
+  content:"";
+  position:absolute;
+  inset:-13px;
+  border:1px solid #ffd0e337;
+  border-radius:50%;
+}
+
+.art-label{
+  position:absolute;
+  bottom:5%;
+  color:var(--pink);
+  font-family:'Playfair Display',serif;
+  font-size:1.15rem;
+  letter-spacing:3px;
+  animation:pulse 4s infinite;
+}
+
+.art-spark{
+  position:absolute;
+  color:var(--gold);
+  font-size:1.6rem;
+  animation:float 4s infinite;
+}
+.s1{top:10%;left:12%}
+.s2{right:10%;top:18%;animation-delay:1s}
+.s3{left:13%;bottom:22%;animation-delay:2s}
+.s4{right:15%;bottom:20%;animation-delay:.5s}
+
+.section{
+  max-width:1300px;
+  padding:85px 6%;
+  margin:auto;
+}
+
+.section-heading{
+  text-align:center;
+  margin-bottom:42px;
+}
+
+.section-heading .eyebrow{display:block;margin-bottom:14px}
+
+.section-heading h2{
+  font-size:clamp(2.1rem,5vw,3.5rem);
+  margin-bottom:15px;
+}
+
+.section-heading p{
+  color:var(--muted);
+  line-height:1.85;
+  max-width:700px;
+  margin:auto;
+}
+
+.panel{
+  background:linear-gradient(145deg,#321c31eF,#211526f5);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:28px;
+  box-shadow:var(--shadow);
+  transition:border-color .3s,transform .3s,box-shadow .3s;
+}
+
+.panel:hover{
+  border-color:#ff9fbd55;
+  box-shadow:0 20px 70px #00000030;
+}
+
+.panel p{
+  color:var(--muted);
+  line-height:1.95;
+  margin:10px 0;
+}
+
+.panel h3{
+  font-size:1.35rem;
+  margin-bottom:13px;
+}
+
+.story-grid{
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:20px;
+}
+
+.info-row{
+  border-bottom:1px solid var(--line);
+  padding:14px 0;
+  line-height:1.7;
+  color:var(--muted);
+}
+.info-row:last-child{border-bottom:0}
+.info-row strong{
+  display:block;
+  color:var(--pink);
+  margin-bottom:4px;
+}
+
+.note{
+  border-left:3px solid var(--rose);
+  padding:12px 16px;
+  margin-top:18px;
+  background:#ffffff06;
+  color:#f2c8d8;
+  line-height:1.8;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-top:22px;
+}
+
+.stat{
+  padding:22px 12px;
+  text-align:center;
+  border-radius:14px;
+  background:#ffffff06;
+  border:1px solid var(--line);
+}
+
+.stat strong{
+  display:block;
+  font-family:'Playfair Display',serif;
+  color:var(--pink);
+  font-size:1.6rem;
+  margin-bottom:7px;
+}
+.stat span{font-size:.78rem;color:var(--muted)}
+
+.filters{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:25px;
+}
+
+.filter{
+  background:#ffffff07;
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:10px 16px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.filter:hover,.filter.active{
+  background:var(--wine);
+  border-color:#ff9fbd70;
+}
+
+.character-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:17px;
+}
+
+.character{
+  position:relative;
+  overflow:hidden;
+}
+
+.character:before{
+  content:"";
+  position:absolute;
+  height:3px;
+  top:0;left:0;right:0;
+  background:linear-gradient(90deg,var(--rose),var(--gold),var(--lav));
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .4s;
+}
+
+.character:hover:before{transform:scaleX(1)}
+
+.char-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.char-number{
+  color:var(--pink);
+  font-family:'Playfair Display',serif;
+  font-size:2.6rem;
+  opacity:.8;
+}
+
+.char-symbol{
+  width:57px;height:57px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  background:linear-gradient(145deg,#5b2c4b,#37203e);
+  border:1px solid #ffb9d522;
+  color:var(--pink);
+  font-size:1.8rem;
+  animation:wave 5s ease-in-out infinite;
+}
+
+.character:nth-child(even) .char-symbol{color:var(--gold)}
+.character h3{margin-bottom:6px}
+.role{color:var(--pink)!important;font-size:.77rem;font-weight:800;letter-spacing:1px}
+.character p{font-size:.91rem}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+.tag{
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:5px 10px;
+  color:#f0ccdb;
+  font-size:.73rem;
+}
+
+.detail-btn{
+  background:transparent;
+  border:0;
+  color:var(--gold);
+  margin-top:16px;
+  cursor:pointer;
+  font-weight:800;
+  padding:7px 0;
+}
+.detail-btn:hover{color:var(--pink)}
+
+.character.extra{display:none}
+.character.extra.show{display:block}
+
+#characterDetail{
+  margin-top:20px;
+  display:none;
+  border:1px solid #ff9fbd45;
+  background:#321a2c;
+}
+
+.world-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+}
+
+.world-card{
+  min-height:210px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  overflow:hidden;
+  background:linear-gradient(155deg,#6b3155,#301b3b 65%,#171321);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:23px;
+  transition:transform .35s;
+}
+
+.world-card:nth-child(3n+2){
+  background:linear-gradient(155deg,#65405d,#39223f 60%,#191325);
+}
+.world-card:nth-child(3n){
+  background:linear-gradient(155deg,#62463f,#3c203b 60%,#191325);
+}
+.world-card:hover{transform:translateY(-7px) scale(1.015)}
+
+.world-icon{
+  position:absolute;
+  right:20px;top:12px;
+  font-size:4.2rem;
+  color:#ffffff24;
+  transition:.4s;
+}
+.world-card:hover .world-icon{
+  transform:rotate(15deg) scale(1.2);
+  color:#ffc3d543;
+}
+
+.world-card h3{font-size:1.35rem;position:relative}
+.world-card p{font-size:.88rem;color:#e3cddc;line-height:1.8;margin-top:9px;position:relative}
+
+.timeline{
+  border-left:1px solid #e96c99;
+  padding-left:27px;
+  margin:12px 0 0 10px;
+}
+.timeline-item{position:relative;padding:0 0 28px}
+.timeline-item:last-child{padding-bottom:0}
+.timeline-item:before{
+  content:"";
+  position:absolute;
+  width:11px;height:11px;
+  border-radius:50%;
+  left:-33px;top:5px;
+  background:var(--pink);
+  box-shadow:0 0 15px #ff9fbd80;
+}
+.timeline-item h3{color:var(--pink);font-size:1.15rem}
+.timeline-item p{color:var(--muted);line-height:1.85;margin-top:7px}
+
+.accordion{margin-top:12px}
+.accordion button{
+  width:100%;
+  text-align:left;
+  padding:17px;
+  border-radius:10px;
+  background:#ffffff06;
+  border:1px solid var(--line);
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  margin-top:10px;
+}
+.accordion button:hover{border-color:#ff9fbd55}
+.accordion-content{
+  display:none;
+  padding:14px 17px;
+  color:var(--muted);
+  line-height:1.9;
+}
+.accordion-content.open{display:block;animation:revealDown .3s ease}
+
+@keyframes revealDown{
+  from{opacity:0;transform:translateY(-6px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.game-tabs{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:25px;
+}
+.game-tab{
+  background:#ffffff07;
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:12px 16px;
+  cursor:pointer;
+  transition:.25s;
+}
+.game-tab:hover,.game-tab.active{background:var(--wine);border-color:#ff9fbd66}
+
+.game{max-width:850px;margin:auto}
+.game:not(.active){display:none}
+.game-head{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.score{color:var(--gold);font-weight:800}
+.progress{
+  width:100%;height:7px;
+  border-radius:20px;
+  overflow:hidden;
+  background:#ffffff12;
+  margin:20px 0;
+}
+.progress div{
+  height:100%;width:0;
+  background:linear-gradient(90deg,var(--rose),var(--gold));
+  transition:width .4s;
+}
+.question{
+  font-size:1.22rem;
+  line-height:1.7;
+  font-weight:800;
+  margin:22px 0;
+}
+.answers{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin:18px 0;
+}
+.answer{
+  text-align:left;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#ffffff06;
+  padding:15px;
+  cursor:pointer;
+  transition:.2s;
+}
+.answer:hover:not(:disabled){background:#74334e55;border-color:#ff9fbd75;transform:translateY(-2px)}
+.answer:disabled{cursor:default}
+.answer.correct{border-color:#7cdbad;background:#21463866}
+.answer.wrong{border-color:#ff879f;background:#67253c66}
+.feedback{min-height:45px;color:var(--pink);line-height:1.8;margin:14px 0}
+.game-controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+
+.memory-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin:24px 0;
+}
+.memory-card{
+  aspect-ratio:1/1;
+  border:1px solid #ffffff20;
+  border-radius:12px;
+  background:linear-gradient(145deg,#4d2947,#28172f);
+  display:grid;place-items:center;
+  font-size:clamp(1.3rem,4vw,2.4rem);
+  cursor:pointer;
+  transition:transform .3s,background .3s;
+}
+.memory-card:hover:not(.matched){transform:scale(1.04);border-color:var(--pink)}
+.memory-card.matched{background:#285141;border-color:#83caa5;cursor:default}
+.memory-card.flipped{background:#5c2e51;border-color:#ffb7d1}
+
+.timer{
+  font-family:'Playfair Display',serif;
+  color:var(--gold);
+  font-size:1.4rem;
+}
+
+.personality-option{width:100%}
+
+.result-box{
+  padding:22px;
+  margin-top:18px;
+  border:1px solid #ff9fbd40;
+  border-radius:14px;
+  background:#ffffff06;
+  display:none;
+}
+.result-box h3{color:var(--pink);font-size:1.6rem}
+.result-box p{line-height:1.9;color:var(--muted)}
+
+.love-meter{
+  height:12px;
+  background:#ffffff12;
+  border-radius:20px;
+  overflow:hidden;
+  margin:18px 0;
+}
+.love-meter div{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#c45b8b,#ffb2ce,#f3d29c);
+  transition:width 1.5s cubic-bezier(.2,.8,.2,1);
+}
+
+.daily{
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.daily-heart{font-size:3rem;animation:heartbeat 2s infinite}
+#dailyText{font-family:'Playfair Display',serif;font-size:1.3rem;color:#f4c6d7;line-height:1.8;margin:22px 0}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:55px 6%;
+  text-align:center;
+  background:#100a14;
+  color:var(--muted);
+  line-height:2;
+  font-size:.86rem;
+}
+footer .brand{display:block;margin-bottom:12px}
+footer p{margin:5px 0}
+footer .footer-love{color:var(--pink);margin-top:16px}
+
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .8s ease,transform .8s ease;
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+#backTop{
+  position:fixed;
+  right:20px;bottom:22px;
+  z-index:90;
+  width:48px;height:48px;
+  border:1px solid #ffb2ce4a;
+  border-radius:50%;
+  background:#31192e;
+  color:var(--pink);
+  cursor:pointer;
+  font-size:1.25rem;
+  box-shadow:0 6px 25px #0003;
+  transition:.3s;
+}
+#backTop:hover{transform:translateY(-5px);background:#64304e}
+
+#musicToggle{
+  position:fixed;
+  bottom:80px;
+  right:20px;
+  z-index:90;
+  width:48px;height:48px;
+  border:1px solid #ffb2ce4a;
+  border-radius:50%;
+  background:#31192e;
+  color:var(--gold);
+  cursor:pointer;
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translate(-50%,25px);
+  background:#41233c;
+  border:1px solid #ff9fbd55;
+  border-radius:12px;
+  padding:13px 20px;
+  z-index:200;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+  text-align:center;
+  max-width:90vw;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;text-align:center;padding-top:70px}
+  .hero-desc{margin:auto}
+  .hero-actions{justify-content:center}
+  .hero-art{min-height:390px}
+  .story-grid{grid-template-columns:1fr}
+  .character-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .world-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-width:650px){
+  .nav{flex-wrap:wrap}
+  .menu-btn{display:block}
+  .nav-links{
+    display:none;
+    width:100%;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    padding-top:10px;
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{display:block;padding:12px 5px}
+  .hero{min-height:auto;padding-top:80px;padding-bottom:65px}
+  .hero h1{font-size:clamp(3rem,13vw,5rem);letter-spacing:-1px}
+  .hero-art{min-height:320px}
+  .heart-core{width:145px;height:145px;font-size:4rem}
+  .section{padding:65px 5%}
+  .character-grid,.world-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .answers{grid-template-columns:1fr}
+  .panel{padding:21px}
+  .memory-grid{gap:7px}
+  .memory-card{border-radius:8px}
+  .game-head{align-items:flex-start}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="sky"></canvas>
+<div id="petals"></div>
+
+<header>
+  <nav class="nav">
+    <a href="#home" class="brand">♡ Horimiya</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">☰ Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#story">História</a></li>
+      <li><a href="#characters">Personagens</a></li>
+      <li><a href="#universe">Universo</a></li>
+      <li><a href="#timeline">Curiosidades</a></li>
+      <li><a href="#games">Jogos</a></li>
+      <li><a href="#daily">Mensagem do dia</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="reveal">
+    <span class="eyebrow">✦ A story about love, friendship & growing up ✦</span>
+    <h1>Hori<br><span class="gradient">&</span> Miyamura</h1>
+    <p class="hero-desc">
+      Às vezes, as pessoas que parecem se conhecer melhor são justamente
+      aquelas que ainda têm muito a descobrir uma sobre a outra.
+      Entre segredos, amizades e momentos inesquecíveis, descubra o universo
+      de Horimiya — uma história sobre enxergar quem alguém realmente é.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#story">Descobrir a história ♡</a>
+      <a class="btn btn-ghost" href="#games">Vamos jogar? ✧</a>
+    </div>
+  </div>
+
+  <div class="hero-art reveal">
+    <div class="heart-orbit"></div>
+    <div class="heart-orbit two"></div>
+    <div class="heart-core">♡</div>
+    <span class="art-spark s1">✧</span>
+    <span class="art-spark s2">✦</span>
+    <span class="art-spark s3">⋆</span>
+    <span class="art-spark s4">♡</span>
+    <span class="art-label">BETWEEN TWO HEARTS</span>
+  </div>
+</section>
+
+<section class="section" id="story">
+  <div class="section-heading reveal">
+    <span class="eyebrow">The beginning of everything</span>
+    <h2>Uma história sobre <span class="gradient">ser você mesmo</span></h2>
+    <p>Por trás das aparências, existem histórias que só podem ser descobertas quando alguém se aproxima de verdade.</p>
+  </div>
+
+  <div class="story-grid">
+    <article class="panel reveal">
+      <h3>♡ Sobre Horimiya</h3>
+      <p>
+        <strong>Horimiya</strong> é uma obra de romance e comédia escolar
+        baseada no mangá escrito por HERO e ilustrado por Daisuke Hagiwara,
+        que adapta o webcomic original de HERO.
+      </p>
+      <p>
+        Kyouko Hori é uma estudante popular, inteligente e responsável que,
+        fora da escola, dedica bastante tempo à família e às tarefas de casa.
+        Izumi Miyamura, por outro lado, parece quieto e distante na escola,
+        mas tem um lado muito diferente longe dos olhares dos colegas.
+      </p>
+      <p>
+        Quando os dois se encontram fora do ambiente escolar, descobrem
+        segredos que nenhum deles imaginava. A aproximação transforma
+        a relação dos dois e abre espaço para novas amizades, sentimentos
+        e experiências.
+      </p>
+      <p>
+        A história não acompanha apenas o casal: também explora os amigos,
+        suas inseguranças, os primeiros relacionamentos e a maneira como
+        as pessoas mudam quando se sentem aceitas.
+      </p>
+      <div class="note">
+        ✧ A ideia central: ninguém cabe completamente na imagem que os outros fazem de si.
+      </div>
+    </article>
+
+    <aside class="panel reveal">
+      <h3>✦ Ficha do anime</h3>
+      <div class="info-row"><strong>Nome</strong>Horimiya</div>
+      <div class="info-row"><strong>Gêneros</strong>Romance, comédia e cotidiano escolar</div>
+      <div class="info-row"><strong>Obra original</strong>Webcomic de HERO</div>
+      <div class="info-row"><strong>Mangá</strong>Ilustrado por Daisuke Hagiwara</div>
+      <div class="info-row"><strong>Estúdio de animação</strong>CloverWorks</div>
+      <div class="info-row"><strong>Adaptação para anime</strong>Horimiya (2021) e Horimiya: The Missing Pieces (2023)</div>
+      <div class="info-row"><strong>Temas</strong>Amor, amizade, família e identidade</div>
+    </aside>
+  </div>
+
+  <div class="stats reveal">
+    <div class="stat"><strong>♡</strong><span>Romance</span></div>
+    <div class="stat"><strong>✧</strong><span>Amizades</span></div>
+    <div class="stat"><strong>☾</strong><span>Vida escolar</span></div>
+    <div class="stat"><strong>∞</strong><span>Crescimento pessoal</span></div>
+  </div>
+</section>
+
+<section class="section" id="characters">
+  <div class="section-heading reveal">
+    <span class="eyebrow">Meet the characters</span>
+    <h2>Quem faz parte de <span class="gradient">Horimiya?</span></h2>
+    <p>Explore as personalidades, as relações e as histórias de quem torna esse universo especial. Os símbolos são decorativos, não retratos dos personagens.</p>
+  </div>
+
+  <div class="filters reveal">
+    <button class="filter active" data-filter="all">Todos</button>
+    <button class="filter" data-filter="main">Protagonistas</button>
+    <button class="filter" data-filter="friends">Amigos</button>
+    <button class="filter" data-filter="family">Família</button>
+  </div>
+
+  <div class="character-grid" id="characterGrid">
+
+    <article class="panel character reveal" data-category="main">
+      <div class="char-top"><span class="char-number">01</span><span class="char-symbol">♡</span></div>
+      <p class="role">A PROTAGONISTA</p>
+      <h3>Kyouko Hori</h3>
+      <p>Popular, inteligente e determinada, Hori assume muitas responsabilidades em casa. Por trás de sua imagem confiante, existe alguém que também precisa de carinho, compreensão e espaço para ser vulnerável.</p>
+      <div class="tags"><span class="tag">Responsável</span><span class="tag">Direta</span><span class="tag">Carinhosa</span></div>
+      <button class="detail-btn" data-detail="hori">Descobrir mais +</button>
+    </article>
+
+    <article class="panel character reveal" data-category="main">
+      <div class="char-top"><span class="char-number">02</span><span class="char-symbol">✦</span></div>
+      <p class="role">O PROTAGONISTA</p>
+      <h3>Izumi Miyamura</h3>
+      <p>Na escola, Miyamura parece reservado. Fora dela, demonstra uma personalidade mais aberta e um visual diferente. Seu vínculo com Hori ajuda a revelar seu lado gentil e a superar sentimentos de isolamento.</p>
+      <div class="tags"><span class="tag">Gentil</span><span class="tag">Reservado</span><span class="tag">Leal</span></div>
+      <button class="detail-btn" data-detail="miyamura">Descobrir mais +</button>
+    </article>
+
+    <article class="panel character reveal" data-category="friends">
+      <div class="char-top"><span class="char-number">03</span><span class="char-symbol">☼</span></div>
+      <p class="role">O AMIGO DE INFÂNCIA</p>
+      <h3>Toru Ishikawa</h3>
+      <p>Amigo de Hori, Toru é sincero e companheiro. Seus sentimentos, suas amizades e suas escolhas amorosas fazem parte de uma das histórias paralelas importantes da série.</p>
+      <div class="tags"><span class="tag">Companheiro</span><span class="tag">Sincero</span></div>
+      <button class="detail-btn" data-detail="toru">Descobrir mais +</button>
+    </article>
+
+    <article class="panel character reveal" data-category="friends">
+      <div class="char-top"><span class="char-number">04</span><span class="char-symbol">❀</span></div>
+      <p class="role">A AMIGA</p>
+      <h3>Yuki Yoshikawa</h3>
+      <p>Extrovertida e amigável, Yuki participa dos momentos divertidos do grupo. Sua história também apresenta inseguranças e sentimentos que nem sempre são fáceis de expressar.</p>
+      <div class="tags"><span class="tag">Divertida</span><span class="tag">Afetuosa</span></div>
+      <button class="detail-btn" data-detail="yuki">Descobrir mais +</button>
+    </article>
+
+    <article class="panel character reveal" data-category="friends">
+      <div class="char-top"><span class="char-number">05</span><span class="char-symbol">◇</span></div>
+      <p class="role">O PRESIDENTE DO CONSELHO</p>
+      <h3>Kakeru Sengoku</h3>
+      <p>Presidente do conselho estudantil e conhecido de Hori desde a infância. Apesar da aparência séria, Kakeru tem inseguranças e um lado descontraído que aparece com as pessoas próximas.</p>
+      <div class="tags"><span class="tag">Estudioso</span><span class="tag">Ansioso</span></div>
+      <button class="detail-btn" data-detail="sengoku">Descobrir mais +</button>
+    </article>
+
+    <article class="panel character reveal" data-category="friends">
+      <div class="char-top"><span class="char-number">06</span><span class="char-symbol">☾</span></div>
+      <p class="role">A ESTUDANTE</p>
+      <h3>Remi Ayasaki</h3>
+      <p>Namorada de Sengoku, Remi é alegre, expressiva e espontânea. Ela costuma trazer leveza ao grupo e demonstra carinho pelas pessoas que ama.</p>
+      <div class="tags"><span class="tag">Alegre</span><span class="tag">Espontânea</span></div>
+      <button class="detail-btn" data-detail="remi">Descobrir mais +</button>
+    </article>
+
+    <article class="panel character reveal" data-category="friends">
+      <div class="char-top"><span class="char-number">07</span><span class="char-symbol">✧</span></div>
+      <p class="role">O AMIGO RESERVADO</p>
+      <h3>Shu Iura</h3>
+      <p>Um dos amigos do grupo, Iura é energético e brincalhão. Seu jeito descontraído contrasta com a seriedade que pode demonstrar em algumas situações.</p>
+      <div class="tags"><span class="tag">Brincalhão</span><span class="tag">Amigo</span></div>
+      <button class="detail-btn" data-detail="iura">Descobrir mais +</button>
+    </article>
+
+    <article class="panel character reveal" data-category="friends">
+      <div class="char-top"><span class="char-number">08</span><span class="char-symbol">❋</span></div>
+      <p class="role">A ESTUDANTE</p>
+      <h3>Sakura Kouno</h3>
+      <p>Uma estudante gentil e discreta que faz parte do conselho estudantil. Seus sentimentos e sua relação com Toru acrescentam outra perspectiva às histórias de amor da série.</p>
+      <div class="tags"><span class="tag">Gentil</span><span class="tag">Tímida</span></div>
+      <button class="detail-btn" data-detail="sakura">Descobrir mais +</button>
+    </article>
+
+    <article class="panel character reveal" data-category="family">
+      <div class="char-top"><span class="char-number">09</span><span class="char-symbol">♡</span></div>
+      <p class="role">O IRMÃO MAIS NOVO</p>
+      <h3>Souta Hori</h3>
+      <p>Irmão mais novo de Kyouko. Seu encontro com Miyamura ajuda a aproximar os protagonistas e mostra o lado protetor e familiar de Hori.</p>
+      <div class="tags"><span class="tag">Família</span><span class="tag">Carinhoso</span></div>
+      <button class="detail-btn" data-detail="souta">Descobrir mais +</button>
+    </article>
+
+    <article class="panel character reveal" data-category="family">
+      <div class="char-top"><span class="char-number">10</span><span class="char-symbol">☼</span></div>
+      <p class="role">O PAI DE HORI</p>
+      <h3>Kyousuke Hori</h3>
+      <p>O pai de Hori tem uma personalidade descontraída e uma relação familiar que contrasta com a postura responsável da filha. Sua presença traz situações cômicas à história.</p>
+      <div class="tags"><span class="tag">Família</span><span class="tag">Humor</span></div>
+      <button class="detail-btn" data-detail="kyousuke">Descobrir mais +</button>
+    </article>
+
+    <article class="panel character reveal" data-category="friends">
+      <div class="char-top"><span class="char-number">11</span><span class="char-symbol">◇</span></div>
+      <p class="role">O ESTUDANTE</p>
+      <h3>Akane Yanagi</h3>
+      <p>Um estudante popular e educado, conhecido por sua aparência e seu jeito gentil. Sua participação amplia o círculo de amizades e os relacionamentos do grupo.</p>
+      <div class="tags"><span class="tag">Educado</span><span class="tag">Gentil</span></div>
+      <button class="detail-btn" data-detail="yanagi">Descobrir mais +</button>
+    </article>
+
+    <article class="panel character reveal" data-category="friends">
+      <div class="char-top"><span class="char-number">12</span><span class="char-symbol">❀</span></div>
+      <p class="role">A ESTUDANTE</p>
+      <h3>Honoka Sawada</h3>
+      <p>Uma estudante mais nova que desenvolve uma relação próxima com Hori. Sua história explora admiração, convivência e a importância de construir vínculos.</p>
+      <div class="tags"><span class="tag">Estudante</span><span class="tag">Sensível</span></div>
+      <button class="detail-btn" data-detail="sawada">Descobrir mais +</button>
+    </article>
+  </div>
+
+  <div class="panel" id="characterDetail" aria-live="polite">
+    <h3 id="detailTitle"></h3>
+    <p id="detailText"></p>
+    <button class="btn btn-ghost" id="closeDetail">Fechar ✕</button>
+  </div>
+
+  <div style="text-align:center;margin-top:25px" class="reveal">
+    <button class="btn btn-ghost" id="showAllCharacters">Mostrar todos os personagens ♡</button>
+  </div>
+</section>
+
+<section class="section" id="universe">
+  <div class="section-heading reveal">
+    <span class="eyebrow">Little things, big feelings</span>
+    <h2>O universo de <span class="gradient">Horimiya</span></h2>
+    <p>Algumas das coisas que tornam a obra especial, desde os encontros inesperados até os momentos simples da vida escolar.</p>
+  </div>
+
+  <div class="world-grid">
+    <article class="world-card reveal">
+      <span class="world-icon">♡</span>
+      <h3>Amor que cresce</h3>
+      <p>O relacionamento de Hori e Miyamura se desenvolve por meio da confiança, das conversas e do conhecimento das partes menos visíveis de cada um.</p>
+    </article>
+    <article class="world-card reveal">
+      <span class="world-icon">✧</span>
+      <h3>Segredos pessoais</h3>
+      <p>Os personagens descobrem que uma pessoa pode ter diferentes lados dependendo do lugar e das pessoas com quem está.</p>
+    </article>
+    <article class="world-card reveal">
+      <span class="world-icon">☾</span>
+      <h3>Amizade verdadeira</h3>
+      <p>O grupo cresce junto, enfrenta mal-entendidos e aprende a respeitar as diferenças de cada integrante.</p>
+    </article>
+    <article class="world-card reveal">
+      <span class="world-icon">❀</span>
+      <h3>Vida cotidiana</h3>
+      <p>Pequenos encontros, conversas e brincadeiras são tão importantes quanto os grandes acontecimentos românticos.</p>
+    </article>
+    <article class="world-card reveal">
+      <span class="world-icon">∞</span>
+      <h3>Autoconhecimento</h3>
+      <p>A história mostra como ser aceito pode ajudar alguém a se expressar e a compreender melhor os próprios sentimentos.</p>
+    </article>
+    <article class="world-card reveal">
+      <span class="world-icon">☼</span>
+      <h3>Família e carinho</h3>
+      <p>A relação com familiares também influencia a vida dos protagonistas e revela lados que nem todos os colegas conhecem.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="timeline">
+  <div class="section-heading reveal">
+    <span class="eyebrow">Behind the story</span>
+    <h2>Curiosidades & <span class="gradient">detalhes</span></h2>
+    <p>Conheça um pouco mais sobre a obra sem precisar de imagens para explorar seus detalhes.</p>
+  </div>
+
+  <div class="story-grid">
+    <article class="panel reveal">
+      <h3>✦ Um pouco da trajetória</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Webcomic original</h3>
+          <p>Horimiya começou como um webcomic de HERO, conhecido originalmente como Hori-san to Miyamura-kun.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Adaptação em mangá</h3>
+          <p>Daisuke Hagiwara ilustrou a adaptação em mangá, que ampliou a popularidade da história.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Anime de 2021</h3>
+          <p>A série de televisão adaptou os principais acontecimentos do romance e apresentou os personagens a novos públicos.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Horimiya: The Missing Pieces</h3>
+          <p>A série de 2023 trouxe episódios baseados em histórias do mangá que não haviam aparecido na primeira adaptação.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel reveal">
+      <h3>♡ Perguntas frequentes</h3>
+      <div class="accordion">
+        <button aria-expanded="false">Horimiya é só um romance? <span>＋</span></button>
+        <div class="accordion-content">Não. Além do romance, a obra explora amizade, família, identidade, inseguranças e a vida cotidiana dos estudantes.</div>
+
+        <button aria-expanded="false">Por que Miyamura parece diferente fora da escola? <span>＋</span></button>
+        <div class="accordion-content">Ele apresenta um estilo e uma personalidade diferentes longe dos colegas. Essa diferença ajuda a construir o vínculo entre ele e Hori.</div>
+
+        <button aria-expanded="false">O anime tem continuação? <span>＋</span></button>
+        <div class="accordion-content">Além da série de 2021, existe Horimiya: The Missing Pieces, de 2023, que adapta episódios e acontecimentos adicionais do mangá.</div>
+
+        <button aria-expanded="false">Qual é a mensagem da história? <span>＋</span></button>
+        <div class="accordion-content">Uma das mensagens centrais é que conhecer alguém de verdade exige olhar além das primeiras impressões e respeitar seus sentimentos.</div>
+
+        <button aria-expanded="false">Quem criou Horimiya? <span>＋</span></button>
+        <div class="accordion-content">HERO criou a obra original; Daisuke Hagiwara ilustrou a adaptação em mangá.</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="games">
+  <div class="section-heading reveal">
+    <span class="eyebrow">Let's play together</span>
+    <h2>Hora de <span class="gradient">brincar!</span></h2>
+    <p>Teste o que você sabe, exercite a memória e descubra qual personagem combina com a sua personalidade.</p>
+  </div>
+
+  <div class="game-tabs reveal">
+    <button class="game-tab active" data-game="quiz">♡ Quiz</button>
+    <button class="game-tab" data-game="truefalse">✧ Verdadeiro ou falso</button>
+    <button class="game-tab" data-game="memory">❀ Memória</button>
+    <button class="game-tab" data-game="personality">☾ Personalidade</button>
+    <button class="game-tab" data-game="heart">∞ Afinidade</button>
+  </div>
+
+  <div class="panel game active" id="quiz">
+    <div class="game-head">
+      <h3>♡ O quanto você conhece Horimiya?</h3>
+      <span class="score" id="quizScore">0 pontos</span>
+    </div>
+    <div class="progress"><div id="quizProgress"></div></div>
+    <p class="question" id="quizQuestion"></p>
+    <div class="answers" id="quizAnswers"></div>
+    <p class="feedback" id="quizFeedback" aria-live="polite"></p>
+    <div class="game-controls">
+      <button class="btn btn-primary" id="quizNext">Próxima pergunta →</button>
+      <button class="btn btn-ghost" id="quizRestart">Recomeçar ↻</button>
+    </div>
+  </div>
+
+  <div class="panel game" id="truefalse">
+    <div class="game-head">
+      <h3>✧ Verdadeiro ou falso?</h3>
+      <span class="score" id="tfScore">0 pontos</span>
+    </div>
+    <div class="progress"><div id="tfProgress"></div></div>
+    <p class="question" id="tfQuestion"></p>
+    <div class="answers">
+      <button class="answer" data-tf="true">♡ Verdadeiro</button>
+      <button class="answer" data-tf="false">✕ Falso</button>
+    </div>
+    <p class="feedback" id="tfFeedback" aria-live="polite"></p>
+    <div class="game-controls">
+      <button class="btn btn-primary" id="tfNext">Continuar →</button>
+      <button class="btn btn-ghost" id="tfRestart">Recomeçar ↻</button>
+    </div>
+  </div>
+
+  <div class="panel game" id="memory">
+    <div class="game-head">
+      <h3>❀ Jogo da memória</h3>
+      <span class="score">Pares: <span id="memoryPairs">0</span>/8</span>
+    </div>
+    <p style="color:var(--muted);line-height:1.8;margin-top:10px">Encontre os oito pares de símbolos. Tente completar o tabuleiro com o menor número de movimentos!</p>
+    <div class="game-head" style="margin-top:15px">
+      <span>Movimentos: <strong id="memoryMoves">0</strong></span>
+      <span class="timer" id="memoryTimer">00:00</span>
+    </div>
+    <div class="memory-grid" id="memoryGrid"></div>
+    <p class="feedback" id="memoryFeedback" aria-live="polite"></p>
+    <button class="btn btn-primary" id="memoryRestart">Novo jogo ↻</button>
+  </div>
+
+  <div class="panel game" id="personality">
+    <h3>☾ Qual personagem combina com você?</h3>
+    <p style="color:var(--muted);line-height:1.8">Responda pensando no que você faria de verdade. No final, você descobrirá o resultado que mais combina com suas escolhas.</p>
+    <div class="progress"><div id="personProgress"></div></div>
+    <p class="question" id="personQuestion"></p>
+    <div class="answers" id="personAnswers"></div>
+    <p class="feedback" id="personFeedback" aria-live="polite"></p>
+    <div class="result-box" id="personResult">
+      <h3 id="personResultTitle"></h3>
+      <p id="personResultText"></p>
+    </div>
+    <button class="btn btn-ghost" id="personRestart">Fazer novamente ↻</button>
+  </div>
+
+  <div class="panel game" id="heart">
+    <h3>∞ Medidor de afinidade</h3>
+    <p style="color:var(--muted);line-height:1.8">Escolha duas características que você valoriza em uma amizade ou relacionamento. O resultado é apenas uma brincadeira, não uma medida real de compatibilidade.</p>
+    <div style="display:grid;gap:15px;margin:22px 0">
+      <label for="heartOne">O que você mais valoriza?</label>
+      <select id="heartOne" class="answer">
+        <option value="10">Sinceridade</option>
+        <option value="20">Humor</option>
+        <option value="30">Carinho</option>
+        <option value="40">Lealdade</option>
+        <option value="50">Compreensão</option>
+      </select>
+      <label for="heartTwo">O que mais te faz feliz?</label>
+      <select id="heartTwo" class="answer">
+        <option value="10">Conversas longas</option>
+        <option value="20">Momentos engraçados</option>
+        <option value="30">Pequenos gestos</option>
+        <option value="40">Apoio nos dias difíceis</option>
+        <option value="50">Passar tempo juntos</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" id="heartCalculate">Descobrir afinidade ♡</button>
+    <div class="result-box" id="heartResult">
+      <h3 id="heartTitle"></h3>
+      <div class="love-meter"><div id="heartBar"></div></div>
+      <p id="heartText"></p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="daily">
+  <div class="section-heading reveal">
+    <span class="eyebrow">A little message for you</span>
+    <h2>Um carinho para <span class="gradient">seu dia</span></h2>
+    <p>Porque às vezes uma frase bonita é tudo de que precisamos.</p>
+  </div>
+
+  <div class="panel daily reveal">
+    <div class="daily-heart">♡</div>
+    <p id="dailyText">Clique no botão para receber uma mensagem especial.</p>
+    <button class="btn btn-primary" id="dailyButton">Receber mensagem ✧</button>
+  </div>
+</section>
+
+<section class="section">
+  <div class="panel daily reveal">
+    <span class="eyebrow">Thank you for being here</span>
+    <h2 style="font-size:clamp(2rem,5vw,3.3rem);margin:20px 0">Every heart has a story. <span class="gradient">♡</span></h2>
+    <p>Continue sendo você. As melhores conexões começam quando podemos mostrar quem realmente somos.</p>
+    <div class="hero-actions" style="justify-content:center">
+      <a class="btn btn-primary" href="#home">Voltar ao começo ↑</a>
+      <button class="btn btn-ghost" id="surpriseBtn">Surpresa ✨</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span class="brand">♡ HORIMIYA — BETWEEN HEARTS</span>
+  <p>Um cantinho de fã feito para celebrar uma história sobre amor, amizade e autoconhecimento.</p>
+  <p>Este é um projeto independente, sem afiliação oficial. Horimiya e seus personagens pertencem aos respectivos titulares.</p>
+  <p class="footer-love">Made with love, stars and a little bit of magic ✧</p>
+</footer>
+
+<button id="musicToggle" aria-label="Ativar ou desativar sons" title="Ativar ou desativar sons">♫</button>
+<button id="backTop" aria-label="Voltar ao topo">↑</button>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+// ============================================
+// CÉU NOTURNO ANIMADO
+// ============================================
+const sky = document.getElementById("sky");
+const ctx = sky.getContext("2d");
+let stars = [];
+let shootingStars = [];
+let frame = 0;
+
+function resizeSky(){
+  const dpr = Math.min(window.devicePixelRatio || 1,2);
+  sky.width = innerWidth*dpr;
+  sky.height = innerHeight*dpr;
+  sky.style.width = innerWidth+"px";
+  sky.style.height = innerHeight+"px";
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  stars = Array.from({length:Math.min(160,Math.floor(innerWidth/6))},()=>({
+    x:Math.random()*innerWidth,
+    y:Math.random()*innerHeight,
+    r:Math.random()*1.6+.25,
+    phase:Math.random()*6,
+    speed:Math.random()*.15+.025
+  }));
+}
+resizeSky();
+window.addEventListener("resize",resizeSky);
+
+function drawSky(){
+  ctx.clearRect(0,0,innerWidth,innerHeight);
+  frame+=.014;
+
+  for(const s of stars){
+    const alpha=.25+.7*(Math.sin(frame+s.phase)+1)/2;
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,218,232,${alpha})`;
+    ctx.fill();
+    s.y-=s.speed;
+    if(s.y<0){s.y=innerHeight;s.x=Math.random()*innerWidth}
+  }
+
+  if(Math.random()<.008){
+    shootingStars.push({
+      x:Math.random()*innerWidth*.8,
+      y:Math.random()*innerHeight*.4,
+      life:0,
+      length:Math.random()*65+35,
+      speed:Math.random()*5+4
+    });
+  }
+
+  shootingStars=shootingStars.filter(s=>s.life<24);
+  shootingStars.forEach(s=>{
+    ctx.beginPath();
+    ctx.moveTo(s.x,s.y);
+    ctx.lineTo(s.x-s.length,s.y+s.length*.35);
+    ctx.strokeStyle=`rgba(255,207,225,${1-s.life/24})`;
+    ctx.lineWidth=1.2;
+    ctx.stroke();
+    s.x+=s.speed;
+    s.y+=s.speed*.35;
+    s.life++;
+  });
+
+  requestAnimationFrame(drawSky);
+}
+drawSky();
+
+// ============================================
+// PÉTALAS FLUTUANTES
+// ============================================
+const petalsContainer=document.getElementById("petals");
+const reduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function makePetal(){
+  if(reduceMotion || document.hidden)return;
+  if(petalsContainer.childElementCount>20)return;
+
+  const p=document.createElement("span");
+  p.className="petal";
+  p.style.left=Math.random()*100+"%";
+  p.style.setProperty("--drift",(Math.random()*200-100)+"px");
+  p.style.animationDuration=(Math.random()*7+7)+"s";
+  p.style.opacity=(Math.random()*.4+.25).toString();
+  p.style.transform=`rotate(${Math.random()*360}deg)`;
+  petalsContainer.appendChild(p);
+  p.addEventListener("animationend",()=>p.remove());
+}
+if(!reduceMotion)setInterval(makePetal,650);
+
+// ============================================
+// REVELAÇÃO AO ROLAR A PÁGINA
+// ============================================
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.1});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+// ============================================
+// MENU PARA CELULAR
+// ============================================
+const menuBtn=document.getElementById("menuBtn");
+const navLinks=document.getElementById("navLinks");
+
+menuBtn.addEventListener("click",()=>{
+  const open=navLinks.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded",String(open));
+  menuBtn.textContent=open?"✕ Fechar":"☰ Menu";
+});
+
+navLinks.querySelectorAll("a").forEach(a=>{
+  a.addEventListener("click",()=>{
+    navLinks.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded","false");
+    menuBtn.textContent="☰ Menu";
+  });
+});
+
+document.getElementById("backTop").addEventListener("click",()=>{
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+
+// ============================================
+// NOTIFICAÇÕES
+// ============================================
+let toastTimeout;
+function toast(message){
+  const el=document.getElementById("toast");
+  el.textContent=message;
+  el.classList.add("show");
+  clearTimeout(toastTimeout);
+  toastTimeout=setTimeout(()=>el.classList.remove("show"),2600);
+}
+
+// ============================================
+// FILTRO DE PERSONAGENS
+// ============================================
+document.querySelectorAll(".filter").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const filter=btn.dataset.filter;
+    document.querySelectorAll(".character").forEach(card=>{
+      card.style.display=(filter==="all"||card.dataset.category===filter)?"":"none";
+    });
+  });
+});
+
+// Fichas extras para cada personagem
+const details={
+  hori:["Kyouko Hori","Hori é conhecida por sua habilidade de equilibrar os estudos e as responsabilidades familiares. Sua relação com Miyamura mostra que ela também deseja ser compreendida e acolhida."],
+  miyamura:["Izumi Miyamura","Miyamura aprende a confiar mais nas pessoas e a formar laços que vão além das primeiras impressões. Sua amizade e seu relacionamento com Hori transformam sua vida escolar."],
+  toru:["Toru Ishikawa","Toru é um amigo leal que precisa compreender os próprios sentimentos e lidar com situações amorosas complicadas sem deixar de valorizar suas amizades."],
+  yuki:["Yuki Yoshikawa","Yuki traz humor e energia ao grupo, mas também enfrenta dúvidas sobre seus sentimentos. Sua história mostra que nem sempre é simples dizer o que se sente."],
+  sengoku:["Kakeru Sengoku","Kakeru é responsável como presidente do conselho estudantil, mas não é tão confiante em todas as situações. Sua relação com Remi mostra um lado mais pessoal."],
+  remi:["Remi Ayasaki","Remi é espontânea, carinhosa e muito expressiva. Apesar de seu jeito alegre, ela também tem inseguranças e encontra apoio nas pessoas próximas."],
+  iura:["Shu Iura","Iura costuma animar os colegas com seu humor e sua energia. Ele faz parte do grupo que dá à história um sentimento forte de amizade."],
+  sakura:["Sakura Kouno","Sakura é uma estudante tímida e gentil, envolvida em sentimentos que nem sempre são correspondidos da maneira que gostaria."],
+  souta:["Souta Hori","Souta é o irmão mais novo de Kyouko. Sua amizade com Miyamura é um dos elementos que aproximam os dois protagonistas."],
+  kyousuke:["Kyousuke Hori","O pai de Kyouko é descontraído e imprevisível. Suas interações com a família contribuem para as cenas de humor da obra."],
+  yanagi:["Akane Yanagi","Yanagi é educado e popular, mas sua personalidade não se resume à aparência. Sua presença amplia as relações entre os estudantes."],
+  sawada:["Honoka Sawada","Sawada desenvolve admiração por Hori e passa a encontrar apoio nessa relação. Sua trajetória explora a importância da aceitação."]
+};
+
+document.querySelectorAll(".detail-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const detail=details[btn.dataset.detail];
+    if(!detail)return;
+    document.getElementById("detailTitle").textContent="♡ "+detail[0];
+    document.getElementById("detailText").textContent=detail[1];
+    const box=document.getElementById("characterDetail");
+    box.style.display="block";
+    box.scrollIntoView({behavior:"smooth",block:"nearest"});
+  });
+});
+
+document.getElementById("closeDetail").addEventListener("click",()=>{
+  document.getElementById("characterDetail").style.display="none";
+});
+
+let allCharactersShown=false;
+document.getElementById("showAllCharacters").addEventListener("click",()=>{
+  allCharactersShown=!allCharactersShown;
+  document.querySelectorAll(".character").forEach(card=>{
+    card.style.display="";
+  });
+  document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+  document.querySelector('[data-filter="all"]').classList.add("active");
+  document.getElementById("showAllCharacters").textContent=
+    allCharactersShown?"Todos os personagens estão visíveis ✓":"Mostrar todos os personagens ♡";
+  toast("Todos os personagens estão visíveis! ♡");
+});
+
+// ============================================
+// ACORDEÃO DE CURIOSIDADES
+// ============================================
+document.querySelectorAll(".accordion button").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const content=btn.nextElementSibling;
+    const open=content.classList.toggle("open");
+    btn.setAttribute("aria-expanded",String(open));
+    btn.querySelector("span").textContent=open?"−":"＋";
+  });
+});
+
+// ============================================
+// SISTEMA DE ABAS DOS JOGOS
+// ============================================
+document.querySelectorAll(".game-tab").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".game-tab").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll(".game").forEach(g=>g.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.game).classList.add("active");
+  });
+});
+
+// ============================================
+// QUIZ
+// ============================================
+const quizData=[
+ {q:"Quem é a protagonista feminina?",a:["Yuki Yoshikawa","Kyouko Hori","Remi Ayasaki","Sakura Kouno"],c:1,e:"Kyouko Hori é uma das protagonistas da história."},
+ {q:"Quem é o protagonista masculino?",a:["Toru Ishikawa","Kakeru Sengoku","Izumi Miyamura","Shu Iura"],c:2,e:"Izumi Miyamura é o protagonista masculino."},
+ {q:"Quem criou a obra original?",a:["HERO","Daisuke Hagiwara","CloverWorks","Kyouko Hori"],c:0,e:"HERO criou o webcomic original."},
+ {q:"Quem ilustrou o mangá de Horimiya?",a:["HERO","Daisuke Hagiwara","Akane Yanagi","Shu Iura"],c:1,e:"Daisuke Hagiwara ilustrou a adaptação em mangá."},
+ {q:"Qual estúdio produziu a série de anime?",a:["CloverWorks","MAPPA","Wit Studio","Bones"],c:0,e:"A animação foi produzida pela CloverWorks."},
+ {q:"Quem é o irmão mais novo de Hori?",a:["Toru","Souta","Kakeru","Akane"],c:1,e:"Souta é o irmão mais novo de Kyouko Hori."},
+ {q:"Quem é namorada de Kakeru Sengoku?",a:["Sakura","Yuki","Remi","Sawada"],c:2,e:"Remi Ayasaki é namorada de Kakeru Sengoku."},
+ {q:"Qual é um dos temas principais da obra?",a:["Viagens espaciais","Competição culinária","Mistérios policiais","Amor e autoconhecimento"],c:3,e:"A obra aborda romance, amizade, identidade e crescimento pessoal."},
+ {q:"Quem é conhecido por ser brincalhão e energético?",a:["Shu Iura","Souta Hori","Akane Yanagi","Sakura Kouno"],c:0,e:"Shu Iura é um dos personagens mais descontraídos do grupo."},
+ {q:"Horimiya: The Missing Pieces foi lançado em qual ano?",a:["2019","2021","2023","2025"],c:2,e:"Horimiya: The Missing Pieces foi exibido em 2023."}
+];
+
+let qi=0,qscore=0,qanswered=false;
+
+function renderQuiz(){
+  qanswered=false;
+  const q=quizData[qi];
+  document.getElementById("quizQuestion").textContent=q.q;
+  document.getElementById("quizScore").textContent=qscore+" pontos";
+  document.getElementById("quizProgress").style.width=(qi/quizData.length*100)+"%";
+  document.getElementById("quizFeedback").textContent="";
+  const box=document.getElementById("quizAnswers");
+  box.innerHTML="";
+  q.a.forEach((answer,i)=>{
+    const b=document.createElement("button");
+    b.className="answer";
+    b.textContent=answer;
+    b.addEventListener("click",()=>answerQuiz(i,b));
+    box.appendChild(b);
+  });
+}
+
+function answerQuiz(i,btn){
+  if(qanswered)return;
+  qanswered=true;
+  const q=quizData[qi];
+  document.querySelectorAll("#quizAnswers button").forEach(b=>b.disabled=true);
+  document.querySelectorAll("#quizAnswers button")[q.c].classList.add("correct");
+
+  if(i===q.c){
+    qscore++;
+    document.getElementById("quizFeedback").textContent="♡ Acertou! "+q.e;
+  }else{
+    btn.classList.add("wrong");
+    document.getElementById("quizFeedback").textContent="Quase! "+q.e;
+  }
+  document.getElementById("quizScore").textContent=qscore+" pontos";
+  document.getElementById("quizProgress").style.width=((qi+1)/quizData.length*100)+"%";
+  document.getElementById("quizNext").textContent=qi===quizData.length-1?"Ver resultado ✧":"Próxima pergunta →";
+}
+
+document.getElementById("quizNext").addEventListener("click",()=>{
+  if(!qanswered){toast("Escolha uma resposta primeiro ♡");return}
+  if(qi<quizData.length-1){
+    qi++;
+    renderQuiz();
+  }else{
+    document.getElementById("quizQuestion").textContent=`Seu resultado: ${qscore}/${quizData.length}`;
+    document.getElementById("quizAnswers").innerHTML="";
+    document.getElementById("quizFeedback").textContent=
+      qscore>=9?"Incrível! Você conhece Horimiya muito bem! ♡":
+      qscore>=6?"Muito bem! Você conhece bastante desse universo. ✧":
+      "Que tal rever alguns detalhes e tentar novamente? ❀";
+    document.getElementById("quizNext").textContent="Jogar novamente ↻";
+    document.getElementById("quizNext").onclick=restartQuiz;
+  }
+});
+
+function restartQuiz(){
+  qi=0;qscore=0;qanswered=false;
+  document.getElementById("quizNext").textContent="Próxima pergunta →";
+  document.getElementById("quizNext").onclick=null;
+  renderQuiz();
+}
+document.getElementById("quizRestart").addEventListener("click",restartQuiz);
+renderQuiz();
+
+// ============================================
+// VERDADEIRO OU FALSO
+// ============================================
+const tfData=[
+ {q:"Hori é conhecida por assumir responsabilidades em casa.",a:true,e:"Hori ajuda a cuidar da casa e do irmão mais novo."},
+ {q:"Miyamura tem exatamente a mesma aparência dentro e fora da escola.",a:false,e:"Seu estilo fora da escola é bastante diferente."},
+ {q:"HERO criou a obra original.",a:true,e:"A história original foi criada por HERO."},
+ {q:"Remi é namorada de Toru Ishikawa.",a:false,e:"Remi é namorada de Kakeru Sengoku."},
+ {q:"A amizade é um tema importante em Horimiya.",a:true,e:"As amizades do grupo são centrais à narrativa."},
+ {q:"Souta é o irmão mais novo de Miyamura.",a:false,e:"Souta é o irmão mais novo de Hori."},
+ {q:"A adaptação em mangá foi ilustrada por Daisuke Hagiwara.",a:true,e:"Daisuke Hagiwara ilustrou o mangá."},
+ {q:"Horimiya mistura romance e comédia escolar.",a:true,e:"Esses são dois dos gêneros principais da obra."}
+];
+
+let ti=0,tscore=0,tanswered=false;
+
+function renderTF(){
+  tanswered=false;
+  document.getElementById("tfScore").textContent=tscore+" pontos";
+  document.getElementById("tfProgress").style.width=(ti/tfData.length*100)+"%";
+  document.getElementById("tfQuestion").textContent=ti>=tfData.length?
+    `Você fez ${tscore}/${tfData.length} pontos!`:tfData[ti].q;
+  document.getElementById("tfFeedback").textContent="";
+  document.querySelectorAll("[data-tf]").forEach(b=>{
+    b.disabled=ti>=tfData.length;
+    b.classList.remove("correct","wrong");
+  });
+}
+
+document.querySelectorAll("[data-tf]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    if(tanswered||ti>=tfData.length)return;
+    tanswered=true;
+    const correct=btn.dataset.tf==String(tfData[ti].a);
+    document.querySelectorAll("[data-tf]").forEach(b=>b.disabled=true);
+    if(correct){
+      tscore++;
+      btn.classList.add("correct");
+    }else{
+      btn.classList.add("wrong");
+    }
+    document.getElementById("tfScore").textContent=tscore+" pontos";
+    document.getElementById("tfProgress").style.width=((ti+1)/tfData.length*100)+"%";
+    document.getElementById("tfFeedback").textContent=(correct?"♡ Correto! ":"✧ ") +tfData[ti].e;
+  });
+});
+
+function restartTF(){
+  ti=0;tscore=0;tanswered=false;
+  document.getElementById("tfNext").textContent="Continuar →";
+  renderTF();
+}
+
+document.getElementById("tfNext").addEventListener("click",()=>{
+  if(ti>=tfData.length){restartTF();return}
+  if(!tanswered){toast("Escolha verdadeiro ou falso!");return}
+  ti++;
+  renderTF();
+});
+document.getElementById("tfRestart").addEventListener("click",restartTF);
+renderTF();
+
+// ============================================
+// JOGO DA MEMÓRIA
+// ============================================
+const memorySymbols=["♡","✧","☾","❀","☆","∞","♧","◇"];
+let firstCard=null,lockMemory=false,matchedPairs=0,moves=0;
+let memorySeconds=0,memoryInterval=null,memoryStarted=false;
+
+function startMemory(){
+  clearInterval(memoryInterval);
+  firstCard=null;lockMemory=false;matchedPairs=0;moves=0;
+  memorySeconds=0;memoryStarted=false;
+  document.getElementById("memoryPairs").textContent="0";
+  document.getElementById("memoryMoves").textContent="0";
+  document.getElementById("memoryTimer").textContent="00:00";
+  document.getElementById("memoryFeedback").textContent="";
+  const deck=[...memorySymbols,...memorySymbols].sort(()=>Math.random()-.5);
+  const grid=document.getElementById("memoryGrid");
+  grid.innerHTML="";
+
+  deck.forEach((symbol,index)=>{
+    const b=document.createElement("button");
+    b.className="memory-card";
+    b.textContent="✦";
+    b.dataset.symbol=symbol;
+    b.dataset.index=index;
+    b.setAttribute("aria-label","Carta fechada");
+    b.addEventListener("click",()=>flipCard(b));
+    grid.appendChild(b);
+  });
+}
+
+function flipCard(card){
+  if(lockMemory||card.classList.contains("matched")||card===firstCard||card.classList.contains("flipped"))return;
+
+  if(!memoryStarted){
+    memoryStarted=true;
+    memoryInterval=setInterval(()=>{
+      memorySeconds++;
+      const min=String(Math.floor(memorySeconds/60)).padStart(2,"0");
+      const sec=String(memorySeconds%60).padStart(2,"0");
+      document.getElementById("memoryTimer").textContent=min+":"+sec;
+    },1000);
+  }
+
+  card.textContent=card.dataset.symbol;
+  card.classList.add("flipped");
+  card.setAttribute("aria-label",card.dataset.symbol);
+
+  if(!firstCard){firstCard=card;return}
+
+  moves++;
+  document.getElementById("memoryMoves").textContent=moves;
+
+  if(firstCard.dataset.symbol===card.dataset.symbol){
+    firstCard.classList.remove("flipped");
+    firstCard.classList.add("matched");
+    card.classList.remove("flipped");
+    card.classList.add("matched");
+    firstCard=null;
+    matchedPairs++;
+    document.getElementById("memoryPairs").textContent=matchedPairs;
+
+    if(matchedPairs===memorySymbols.length){
+      clearInterval(memoryInterval);
+      document.getElementById("memoryFeedback").textContent=
+        `Parabéns! Você encontrou todos os pares em ${moves} movimentos e ${document.getElementById("memoryTimer").textContent}. ♡`;
+    }
+  }else{
+    lockMemory=true;
+    const old=firstCard;
+    firstCard=null;
+    setTimeout(()=>{
+      old.textContent="✦";
+      card.textContent="✦";
+      old.classList.remove("flipped");
+      card.classList.remove("flipped");
+      old.setAttribute("aria-label","Carta fechada");
+      card.setAttribute("aria-label","Carta fechada");
+      lockMemory=false;
+    },800);
+  }
+}
+
+document.getElementById("memoryRestart").addEventListener("click",startMemory);
+startMemory();
+
+// ============================================
+// TESTE DE PERSONALIDADE
+// ============================================
+const personalityData=[
+ {q:"Em um grupo de amigos, você costuma...",a:[
+  ["Organizar tudo e cuidar de todos","hori"],
+  ["Observar primeiro e falar quando me sinto à vontade","miyamura"],
+  ["Fazer piadas e deixar tudo mais divertido","toru"],
+  ["Conversar com todo mundo","yuki"]
+ ]},
+ {q:"Qual programa você prefere?",a:[
+  ["Ficar em casa e ajudar minha família","hori"],
+  ["Um passeio tranquilo com alguém especial","miyamura"],
+  ["Sair com os amigos e rir bastante","toru"],
+  ["Uma tarde conversando sobre tudo","yuki"]
+ ]},
+ {q:"Quando algo te preocupa, você...",a:[
+  ["Tento resolver e continuar seguindo em frente","hori"],
+  ["Guardo para mim até confiar em alguém","miyamura"],
+  ["Converso com um amigo de confiança","toru"],
+  ["Procuro alguém para desabafar","yuki"]
+ ]},
+ {q:"O que mais importa em uma relação?",a:[
+  ["Cuidado e compromisso","hori"],
+  ["Ser aceito como realmente sou","miyamura"],
+  ["Confiança e lealdade","toru"],
+  ["Carinho e compreensão","yuki"]
+ ]},
+ {q:"Escolha uma palavra que combine com você.",a:[
+  ["Determinada","hori"],
+  ["Sensível","miyamura"],
+  ["Leal","toru"],
+  ["Espontânea","yuki"]
+ ]}
+];
+
+const personalityResults={
+ hori:{title:"♡ Você combina com Kyouko Hori!",text:"Você é dedicada, forte e se importa muito com as pessoas ao seu redor. Às vezes assume responsabilidades demais, mas também merece receber o mesmo carinho que oferece. Lembre-se de reservar um tempo para si."},
+ miyamura:{title:"✧ Você combina com Izumi Miyamura!",text:"Você valoriza conexões verdadeiras e prefere ser compreendida a impressionar os outros. Seu jeito pode ser reservado, mas existe muito carinho por trás dele. As pessoas certas apreciam quem você realmente é."},
+ toru:{title:"☼ Você combina com Toru Ishikawa!",text:"Você valoriza a amizade, a sinceridade e estar presente para quem gosta. Seu lado companheiro faz diferença, e sua lealdade ajuda a construir relações de confiança."},
+ yuki:{title:"❀ Você combina com Yuki Yoshikawa!",text:"Você gosta de conexão, conversa e momentos compartilhados. Tem um lado divertido e sensível, e pode aprender a expressar seus próprios sentimentos com a mesma atenção que oferece aos outros."}
+};
+
+let pi=0,personScores={};
+
+function startPersonality(){
+  pi=0;
+  personScores={hori:0,miyamura:0,toru:0,yuki:0};
+  document.getElementById("personResult").style.display="none";
+  document.getElementById("personFeedback").textContent="";
+  renderPersonality();
+}
+
+function renderPersonality(){
+  const q=document.getElementById("personQuestion");
+  const box=document.getElementById("personAnswers");
+  box.innerHTML="";
+
+  if(pi>=personalityData.length){
+    const best=Object.keys(personScores).sort((a,b)=>personScores[b]-personScores[a])[0];
+    const result=personalityResults[best];
+    q.textContent="Seu resultado está aqui! ♡";
+    document.getElementById("personProgress").style.width="100%";
+    document.getElementById("personResultTitle").textContent=result.title;
+    document.getElementById("personResultText").textContent=result.text;
+    document.getElementById("personResult").style.display="block";
+    document.getElementById("personFeedback").textContent="Esse teste é só uma brincadeira: você pode ter características de vários personagens!";
+    return;
+  }
+
+  document.getElementById("personResult").style.display="none";
+  q.textContent=personalityData[pi].q;
+  document.getElementById("personProgress").style.width=(pi/personalityData.length*100)+"%";
+
+  personalityData[pi].a.forEach(([label,type])=>{
+    const b=document.createElement("button");
+    b.className="answer personality-option";
+    b.textContent=label;
+    b.addEventListener("click",()=>{
+      personScores[type]++;
+      pi++;
+      renderPersonality();
+    });
+    box.appendChild(b);
+  });
+}
+
+document.getElementById("personRestart").addEventListener("click",startPersonality);
+startPersonality();
+
+// ============================================
+// MEDIDOR DE AFINIDADE DIVERTIDO
+// ============================================
+document.getElementById("heartCalculate").addEventListener("click",()=>{
+  const a=Number(document.getElementById("heartOne").value);
+  const b=Number(document.getElementById("heartTwo").value);
+  const value=55+((a*3+b*7)%41);
+  const result=document.getElementById("heartResult");
+  const bar=document.getElementById("heartBar");
+
+  result.style.display="block";
+  bar.style.width="0";
+  document.getElementById("heartTitle").textContent=
+    value>=85?"♡ Uma conexão cheia de carinho!":
+    value>=70?"✧ Uma bela combinação!":"❀ Uma afinidade para descobrir!";
+
+  document.getElementById("heartText").textContent=
+    `Seu resultado de brincadeira é ${value}%! Compatibilidade de verdade depende de respeito, comunicação, confiança e de como as pessoas se tratam — não de um número.`;
+
+  requestAnimationFrame(()=>requestAnimationFrame(()=>bar.style.width=value+"%"));
+});
+
+// ============================================
+// MENSAGEM DO DIA
+// ============================================
+const dailyMessages=[
+  "Você não precisa ser perfeito para merecer carinho. ♡",
+  "As conexões mais bonitas começam quando podemos ser nós mesmos. ✧",
+  "Pequenos gestos também podem transformar um dia inteiro. ❀",
+  "Você merece amizades em que possa rir, conversar e ser compreendido. ☾",
+  "Não precisa resolver tudo hoje. Um passo de cada vez também é progresso. ♡",
+  "Ser gentil consigo mesmo também é uma forma de coragem. ✧",
+  "As pessoas certas não exigem que você esconda quem realmente é. ∞",
+  "Às vezes, os momentos mais simples viram as lembranças mais especiais. ❀",
+  "Seu jeito de ser tem valor, mesmo quando nem todo mundo consegue enxergar isso. ♡",
+  "Você também merece o cuidado que costuma oferecer aos outros. ☼"
+];
+
+let previousMessage=-1;
+
+document.getElementById("dailyButton").addEventListener("click",()=>{
+  let index;
+  do{index=Math.floor(Math.random()*dailyMessages.length)}
+  while(index===previousMessage&&dailyMessages.length>1);
+  previousMessage=index;
+  document.getElementById("dailyText").textContent=dailyMessages[index];
+  document.getElementById("dailyText").animate(
+    [{opacity:0,transform:"translateY(10px)"},{opacity:1,transform:"translateY(0)"}],
+    {duration:500,easing:"ease-out"}
+  );
+});
+
+// ============================================
+// BOTÃO SURPRESA
+// ============================================
+document.getElementById("surpriseBtn").addEventListener("click",()=>{
+  for(let i=0;i<18;i++){
+    const p=document.createElement("span");
+    p.className="petal";
+    p.style.left=(20+Math.random()*60)+"%";
+    p.style.setProperty("--drift",(Math.random()*350-175)+"px");
+    p.style.animationDuration=(Math.random()*3+3)+"s";
+    petalsContainer.appendChild(p);
+    p.addEventListener("animationend",()=>p.remove());
+  }
+  toast("Você merece uma história cheia de carinho! ♡");
+});
+
+// ============================================
+// BOTÃO DE SOM: SONS GERADOS NO NAVEGADOR
+// Sem música externa e sem reprodução automática.
+// ============================================
+let soundEnabled=false;
+let audioContext=null;
+
+document.getElementById("musicToggle").addEventListener("click",()=>{
+  soundEnabled=!soundEnabled;
+  document.getElementById("musicToggle").textContent=soundEnabled?"♫":"♪";
+  toast(soundEnabled?"Sons suaves ativados ♡":"Sons desativados");
+  if(soundEnabled)playTone(523.25,.12);
+});
+
+function playTone(freq,duration){
+  if(!soundEnabled)return;
+  try{
+    audioContext=audioContext||new(window.AudioContext||window.webkitAudioContext)();
+    if(audioContext.state==="suspended")audioContext.resume();
+    const osc=audioContext.createOscillator();
+    const gain=audioContext.createGain();
+    osc.type="sine";
+    osc.frequency.value=freq;
+    gain.gain.setValueAtTime(.045,audioContext.currentTime);
+    gain.gain.exponentialRampToValueAtTime(.001,audioContext.currentTime+duration);
+    osc.connect(gain);
+    gain.connect(audioContext.destination);
+    osc.start();
+    osc.stop(audioContext.currentTime+duration);
+  }catch(e){}
+}
+
+document.addEventListener("click",e=>{
+  if(e.target.closest("button")&&soundEnabled){
+    playTone(660,.07);
+  }
+},{passive:true});
+
+</script>
+</body>
+</html>
